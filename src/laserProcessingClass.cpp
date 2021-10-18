@@ -98,6 +98,14 @@ void LaserProcessingClass::featureExtraction(const pcl::PointCloud<pcl::PointXYZ
                 scanID = N_SCANS / 2 + int((-8.90 - angle) * 2 + 0.5);
             }
         }
+        else if (N_SCANS == 128)
+        {
+            scanID = int((angle + 92.0/3.0) * 3.0 / 4.0);
+            if (scanID > (N_SCANS - 1) || scanID < 0)
+            {
+                continue;
+            }
+        }
         else
         {
             printf("wrong scan number\n");
@@ -280,4 +288,3 @@ Double3d::Double3d(int id_in, double angle_in, double value_in){
     value =value_in;
     angle =angle_in;
 }
-
