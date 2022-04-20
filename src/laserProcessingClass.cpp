@@ -90,8 +90,16 @@ void LaserProcessingClass::featureExtraction(const pcl::PointCloud<pcl::PointXYZ
                 continue;
             }
         }
+        else if (N_SCANS == 40) {
+            if (angle >= 2)
+                scanID = int((angle + 32.0) + 0.5);
+            else if (angle < 2 && angle >= -6)
+                scanID = int((3.0 * angle + 28.0) + 0.5);
+            else
+                scanID = int((angle + 16.0) + 0.5);
+        }
         else if (N_SCANS == 64)
-        {   
+        {
             if (angle >= -8.70){
                 scanID = int((2 - angle) * 3 + 0.5);
             }else if(angle< -8.70){
@@ -280,4 +288,3 @@ Double3d::Double3d(int id_in, double angle_in, double value_in){
     value =value_in;
     angle =angle_in;
 }
-
